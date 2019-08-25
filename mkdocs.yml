@@ -3,8 +3,8 @@ site_url: https://euler.xfbs.net
 site_description: "Documentation for euler solutions."
 site_author: Patrick M. Elsen
 copyright: 'Copyright &copy; 2019 Patrick M. Elsen'
-repo_name: 'xfbs/euler-web'
-repo_url: 'https://github.com/xfbs/passgen-web'
+repo_name: 'xfbs/euler-doc'
+repo_url: 'https://github.com/xfbs/euler-doc'
 theme:
   name: 'material'
   palette:
@@ -17,6 +17,9 @@ theme:
 nav:
   - About:
     - Intro: index.md
+    - Problem:
+      - Multiples of 3 and 5: problem/001-multiples-of-3-and-5.md
+      - Even Fibonacci Numbers: problem/002-even-fibonacci-numbers.md
   - C:
     - Overview: c/overview.md
     - Library:
