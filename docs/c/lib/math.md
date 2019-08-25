@@ -2,12 +2,34 @@
 
 Module for various math functions.
 
+## Constants
+
+### Phi
+
+```c
+static const double PHI = 1.61803398875;
+```
+
+Phi.
+
+### Root of 5.
+
+```c
+static const double ROOT5 = 2.236067977;
+```
+
+This is the precomputed root of 5.
+
 ## Reference
 
 ### Least Common Multiple
 
 ```c
-uint64_t lcm(uint64_t a, uint64_t b);
+uint64_t lcm(uint64_t a, uint64_t b) {
+  if (b > a)
+    return lcm(b, a);
+  return a / gcd(a, b) * b;
+}
 ```
 
 Compute the least common multiple of two numbers, which is the smallest number
@@ -23,7 +45,15 @@ that is divisible by both numbers.
 ### Greatest Common Divisor
 
 ```c
-uint64_t gcd(uint64_t a, uint64_t b);
+uint64_t gcd(uint64_t a, uint64_t b) {
+  while (b != 0) {
+    uint64_t t = b;
+    b = a % b;
+    a = t;
+  }
+
+  return a;
+}
 ```
 
 Compute the greatest common divisor using euclid's algorithm, which is the
@@ -39,7 +69,21 @@ largest number that is a divisor of both numbers.
 ### Factorial
 
 ```c
-uint64_t factorial(uint8_t nth);
+uint64_t factorial(uint8_t nth) {
+  static uint64_t cache[19] = {0};
+  if (nth <= 1)
+    return 1;
+
+  if (nth <= 20) {
+    if (!cache[nth - 2])
+      cache[nth - 2] = factorial(nth - 1) * nth;
+
+    return cache[nth - 2];
+  } else {
+    // 21! can't be represented in a uint64_t, this is an overflow.
+    return 0;
+  }
+}
 ```
 
 Computes the nth factorial.
@@ -56,11 +100,25 @@ Computes the nth factorial.
 ### Divisors Sum
 
 ```c
-uint32_t divisor_sum(uint32_t num);
+uint32_t divisor_sum(uint32_t num) {
+  uint32_t sum = 0;
+
+  for (uint32_t i = 1; i <= (uint32_t)sqrt(num); i++) {
+    if ((num % i) == 0) {
+      sum += i;
+      if (i != (num / i) && i != 1) {
+        sum += (num / i);
+      }
+    }
+  }
+
+  return sum;
+}
 ```
 
 Calculates the sum of proper divisors of num, meaning all divisors lower
-than num itself.
+than num itself. This could maybe be improved by only checking for prime
+number divisors, and adding up the product of any combinations of them.
 
 !!! example
     ```c
@@ -71,7 +129,19 @@ than num itself.
 ### Palindrome
 
 ```c
-bool is_palindrome(uint64_t num);
+bool is_palindrome(uint64_t num) {
+  // reverse the number and compare against itself
+  uint64_t original = num;
+  uint64_t reversed = 0;
+
+  while (num != 0) {
+    reversed *= 10;
+    reversed += num % 10;
+    num /= 10;
+  }
+
+  return original == reversed;
+}
 ```
 
 Checks if the given number is a palindrome.
@@ -100,7 +170,9 @@ once, therefore it is a permutation of the set $[0..n]$.
 ### Fibonacci
 
 ```c
-uint64_t fibonacci(uint64_t nth);
+uint64_t fibonacci(uint64_t nth) {
+  return round(pow(PHI, nth + 1) / ROOT5);
+}
 ```
 
 Computes the `nth` fibonacci number.

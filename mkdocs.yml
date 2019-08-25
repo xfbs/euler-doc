@@ -16,22 +16,22 @@ theme:
     tabs: true
 nav:
   - About:
-    - Intro: intro.md
+    - Intro: index.md
   - C:
     - Overview: c/overview.md
     - Library:
       - About: c/lib/index.md
+      - Collatz: c/lib/collatz.md
+      - Math: c/lib/math.md
+      - Prime: c/lib/prime.md
       - vec: c/lib/vec.md
       - vec8: c/lib/vec8.md
       - vec16: c/lib/vec16.md
       - vec32: c/lib/vec32.md
       - vec64: c/lib/vec64.md
       - vecp: c/lib/vecp.md
-      - Math: c/lib/math.md
-      - prime: c/lib/prime.md
       - sieve: c/lib/sieve.md
       - Modular Arithmetic: c/lib/modular_arithmetic.md
-      - Collatz: c/lib/collatz.md
 extra_javascript:
   - 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js'
   - 'https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'
