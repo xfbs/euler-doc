@@ -21,7 +21,7 @@ nav:
       - Multiples of 3 and 5: problem/001-multiples-of-3-and-5.md
       - Even Fibonacci Numbers: problem/002-even-fibonacci-numbers.md
   - C:
-    - Overview: c/overview.md
+    - Overview: c/index.md
     - Library:
       - About: c/lib/index.md
       - Collatz: c/lib/collatz.md
