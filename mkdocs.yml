@@ -1,0 +1,48 @@
+site_name: Euler
+site_url: https://euler.xfbs.net
+site_description: "Documentation for euler solutions."
+site_author: Patrick M. Elsen
+copyright: 'Copyright &copy; 2019 Patrick M. Elsen'
+repo_name: 'xfbs/euler-web'
+repo_url: 'https://github.com/xfbs/passgen-web'
+theme:
+  name: 'material'
+  palette:
+    primary: 'blue grey'
+    accent: 'blue'
+  logo:
+    icon: 'extension'
+  feature:
+    tabs: true
+nav:
+  - About:
+    - Intro: intro.md
+  - C:
+    - Overview: c/overview.md
+    - Library:
+      - Vec32: c/lib/vec32.md
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js'
+  - 'https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js'
+  - 'assets/js/katex.js'
+extra_css:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css'
+  - 'https://unpkg.com/mermaid@7.1.2/dist/mermaid.css'
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
+
